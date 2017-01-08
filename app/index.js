@@ -5,17 +5,13 @@ import {
   Text,
   View,
   TextInput,
-  ListView
 } from 'react-native';
 
 export default class RNTutorial extends Component {
   constructor(props){
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state={
       text:'',
-      items: [],
-      dataSource: ds.cloneWithRows([])
     };
   }
 
@@ -29,21 +25,9 @@ export default class RNTutorial extends Component {
           style={styles.textInput}
           placeholder='Gib eine Aufgabe ein'
           onChangeText={(text) => this.setState({text})}/>
-        <Text
-          onPress={() => {
-            this.state.items.push(this.state.text);
-            this.setState({
-              dataSource: this.state.dataSource.cloneWithRows(this.state.items)
-            });
-          }}>
-          Save
+        <Text>
+          {this.state.text}
         </Text>
-        <ListView
-          style={styles.listView}
-          dataSource={this.state.dataSource}
-          renderRow={(item) => <Text>{item}</Text>}
-          enableEmptySections={true}
-        />
       </View>
     );
   }
@@ -62,9 +46,6 @@ const styles = StyleSheet.create({
   textInput:{
     height: 40,
   },
-  listView: {
-    marginTop: 20
-  }
 });
 
 AppRegistry.registerComponent('RNTutorial', () => RNTutorial);
