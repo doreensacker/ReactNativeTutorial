@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -66,5 +65,3 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
-
-AppRegistry.registerComponent('RNTutorial', () => RNTutorial);
